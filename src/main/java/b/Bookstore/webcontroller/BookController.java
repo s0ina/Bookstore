@@ -13,11 +13,9 @@ import b.Bookstore.domain.Book;
 
 public class BookController {
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/localhost:8080", method = RequestMethod.GET)
 	public String getBooks(Model model) {
-		List<Book> books = new ArrayList<Book>(); 
-		books.add(new Book("Dracula", "Bram Stroker", 1897, 11111, 13.00)); 
-		books.add(new Book("The Picture of Dorian Gray", "Oscar Wilde", 1890, 22222, 11.0)); 
+		List<Book> books = new ArrayList<Book>();  
 		model.addAttribute("books", books); 
 		return "bookindex"; 
 	
