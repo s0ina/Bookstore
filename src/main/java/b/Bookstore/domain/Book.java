@@ -1,10 +1,12 @@
 package b.Bookstore.domain;
 
-import org.springframework.data.annotation.Id;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 
 @Entity
 public class Book {
@@ -14,7 +16,7 @@ public class Book {
 	private Long id;
 	private String title;
 	private String author;
-	private int year;
+	private int pub_year;
 	private int isbn;
 	private double price;
 	
@@ -37,10 +39,10 @@ public class Book {
 		this.author = author;
 	}
 	public int getYear() {
-		return year;
+		return pub_year;
 	}
 	public void setYear(int year) {
-		this.year = year;
+		this.pub_year = year;
 	}
 	public int getIsbn() {
 		return isbn;
@@ -56,14 +58,14 @@ public class Book {
 	}
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + pub_year + ", isbn=" + isbn
 				+ ", price=" + price + "]";
 	}
 	public Book(String title, String author, int year, int isbn, double price) {
 		super();
 		this.title = title;
 		this.author = author;
-		this.year = year;
+		this.pub_year = year;
 		this.isbn = isbn;
 		this.price = price;
 	}
@@ -72,7 +74,7 @@ public class Book {
 		super();
 		this.title = null;
 		this.author = null;
-		this.year = 0;
+		this.pub_year = 0;
 		this.isbn = 0;
 		this.price = 0.0;
 	}
