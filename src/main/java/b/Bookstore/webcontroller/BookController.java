@@ -14,35 +14,46 @@ import b.Bookstore.domain.Book;
 import b.Bookstore.domain.BookRepository;
 
 @Controller
-	public class BookController {
-		
-		 
-		@Autowired
-		BookRepository BookRepository; 
-		@RequestMapping(value = "/booklist", method = RequestMethod.GET)
-		public String getBooks(Model model) {
-				List<Book> books =  (List<Book>) BookRepository.findAll();
-				model.addAttribute("books", books);
-				return "booklist";
-									
-		}
-		
-		@RequestMapping(value = "/addbook", method = RequestMethod.GET)
-		public String getNewBookForm(Model model) {
-			model.addAttribute("book", new Book()); 
-			return "/addbook";
-		}
+public class BookController {
 
-		@RequestMapping(value = "/save", method = RequestMethod.POST)
-		public String saveBook(@ModelAttribute Book book) {
-			BookRepository.save(book);
-			return "redirect:/booklist";
-		}
 
-		@RequestMapping(value = "/deletebook/{id}", method = RequestMethod.GET)
-		public String deleteBook(@PathVariable("id") Long bookId) {
-			BookRepository.deleteById(bookId);
-			return "redirect:../booklist";
-		}
+	@Autowired
+	BookRepository BookRepository; 
+	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
+	public String getBooks(Model model) {
+		List<Book> books =  (List<Book>) BookRepository.findAll();
+		model.addAttribute("books", books);
+		return "booklist";
 
-}
+	}
+
+	@RequestMapping(value = "/addbook", method = RequestMethod.GET)
+	public String getNewBookForm(Model model) {
+		model.addAttribute("book", new Book()); 
+		return "/addbook";
+	}
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String saveBook(@ModelAttribute Book book) {
+		BookRepository.save(book);
+		return "redirect:/booklist";
+	}
+
+	@RequestMapping(value = "/deletebook/{id}", method = RequestMethod.GET)
+	public String deleteBook(@PathVariable("id") Long bookId) {
+		BookRepository.deleteById(bookId);
+		return "redirect:../booklist";
+	}
+	
+	//@PostMapping(value = "/editbook")
+	//public String editBookForm(@ModelAttribute(Book book, Model model) {
+		//model.addAttribute("book", book);
+		//return  "redirect:/booklist";
+
+	
+	}
+	
+
+
+
+
