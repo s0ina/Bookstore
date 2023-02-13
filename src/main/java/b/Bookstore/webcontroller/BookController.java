@@ -27,22 +27,22 @@ import b.Bookstore.domain.BookRepository;
 									
 		}
 		
-		@RequestMapping(value = "/newbook", method = RequestMethod.GET)
+		@RequestMapping(value = "/addbook", method = RequestMethod.GET)
 		public String getNewBookForm(Model model) {
 			model.addAttribute("book", new Book()); 
-			return "bookform";
+			return "/addbook";
 		}
 
-		@RequestMapping(value = "/savebook", method = RequestMethod.POST)
+		@RequestMapping(value = "/save", method = RequestMethod.POST)
 		public String saveBook(@ModelAttribute Book book) {
 			BookRepository.save(book);
-			return "redirect:/books";
+			return "redirect:/booklist";
 		}
 
 		@RequestMapping(value = "/deletebook/{id}", method = RequestMethod.GET)
 		public String deleteBook(@PathVariable("id") Long bookId) {
 			BookRepository.deleteById(bookId);
-			return "redirect:../books";
+			return "redirect:../booklist";
 		}
 
 }
