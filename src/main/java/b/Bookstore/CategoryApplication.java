@@ -26,9 +26,9 @@ public class CategoryApplication {
 			repository.save(new Category("Scifi"));	
 			repository.save(new Category("Comedy"));
 			repository.save(new Category("Horror"));
-			repository.save(new Category("Non-fiction"));
+			repository.save(new Category("Science"));
 
-			log.info("fetch all books");
+			log.info("fetch all categories");
 			for (Category category : repository.findAll()) {
 				log.info(category.toString());
 			}
