@@ -12,15 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import b.Bookstore.domain.Book;
 import b.Bookstore.domain.BookRepository;
+import b.Bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
-
+	
+	@Autowired
+	private CategoryRepository crepository;
 
 	@Autowired
 	BookRepository BookRepository; 
 	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
-	public String getBooks(Model model) {
+	public String getBooks(Model model){
 		List<Book> books =  (List<Book>) BookRepository.findAll();
 		model.addAttribute("books", books);
 		return "booklist";
@@ -45,10 +48,14 @@ public class BookController {
 		return "redirect:../booklist";
 	}
 	
-	//@PostMapping(value = "/editbook")
-	//public String editBookForm(@ModelAttribute(Book book, Model model) {
-		//model.addAttribute("book", book);
-		//return  "redirect:/booklist";
+	@RequestMapping(value = "/edit/{id}")
+	public String showModBook(@PathVariable("id") Long bookId, Model model) {
+	model.addAttribute("book", BookRepository.findById(bookId));
+	model.addAttribute("categories", crepository.findAll());
+	return "";
+	
+	
+	}
 
 	
 	}
