@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6" xmlns="http://www.w3.org/1999/xhtml">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
 <head>
 <meta charset="UTF-8">
 <title>Books</title>
@@ -19,10 +19,13 @@
 <td th:text="${books.price}"></td>
 <td th:text="${books.category.name}"></td>
 <td><a th:href="@{/deletebook/{id}(id=${books.id})}"><button class="btn btn-danger">Delete</button></a></td>
-<td><a th:href="@{/editbook/{id}(id=${books.id})}">Edit</a></td>
+
 </tr>
 </table>
 	<a href="/addbook">New Book</a>
+	 <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
 	
 </body>
 </html>
